@@ -41,10 +41,12 @@ for i in uf:
     soup = BeautifulSoup(page.content, 'html.parser')
     results = soup.find_all('div', id='linha')
     # print(results)
+    state = i.replace("%20", " ")
+    print(f"Estado: {state}")
     
     for result in results:
-        state = i.replace("%20", " ")
+        
         cars = result.find('div', id='marca')
         sold_amount = result.find('div', id='val')
-        print(f"Estado: {state} Modelo: {cars.text} | Quantidade vendida: {sold_amount.text}\n\n")
+        print(f"    Modelo: {cars.text} | Quantidade vendida: {sold_amount.text}")
         
